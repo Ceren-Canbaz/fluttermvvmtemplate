@@ -1,18 +1,17 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 
 class BaseView<T> extends StatefulWidget {
-  const BaseView(
-      {super.key,
-      required this.viewModel,
-      required this.onModelReady,
-      required this.onPageBuilder,
-      required this.onDispose});
+  const BaseView({
+    required this.viewModel,
+    this.onModelReady,
+    required this.onPageBuilder,
+    this.onDispose,
+    super.key,
+  });
   final Widget Function(BuildContext context, T value) onPageBuilder;
   final T viewModel;
-  final Function(T model) onModelReady;
-  final VoidCallback onDispose;
+  final Function(T model)? onModelReady;
+  final VoidCallback? onDispose;
   @override
   State<BaseView> createState() => _BaseViewState();
 }
@@ -21,16 +20,19 @@ class _BaseViewState extends State<BaseView> {
   @override
   void initState() {
     super.initState();
-
-    widget.onModelReady(
-      widget.viewModel,
-    );
+    if (widget.onModelReady != null) {
+      widget.onModelReady!(
+        widget.viewModel,
+      );
+    }
   }
 
   @override
   void dispose() {
     super.dispose();
-    widget.onDispose();
+    if (widget.onDispose != null) {
+      widget.onDispose!();
+    }
   }
 
   @override
