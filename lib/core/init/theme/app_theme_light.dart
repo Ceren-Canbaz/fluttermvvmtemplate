@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermvvmtemplate/core/init/theme/app_theme.dart';
+import 'package:fluttermvvmtemplate/core/init/theme/green_theme.dart';
 
 class AppThemeLight extends AppTheme {
   static AppThemeLight? _instance;
@@ -10,5 +11,5 @@ class AppThemeLight extends AppTheme {
 
   AppThemeLight._init();
   @override
-  ThemeData get theme => ThemeData.light();
+  ThemeData get theme => greenThemeLight;
 }
