@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       providers: [...ApplicationProvider.instance.dependItems],
       child: MaterialApp(
         theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
-        home: TestView(),
+        home: const TestView(),
       ),
     );
   }
