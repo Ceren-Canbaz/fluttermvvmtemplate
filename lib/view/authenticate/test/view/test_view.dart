@@ -6,6 +6,7 @@ import 'package:fluttermvvmtemplate/core/base/state/base_state.dart';
 import 'package:fluttermvvmtemplate/core/base/view/base_view.dart';
 import 'package:fluttermvvmtemplate/core/components/text/locale_text.dart';
 import 'package:fluttermvvmtemplate/core/constants/enums/preferences_keys.dart';
+import 'package:fluttermvvmtemplate/core/extension/context_extension.dart';
 import 'package:fluttermvvmtemplate/core/extension/string_extension.dart';
 import 'package:fluttermvvmtemplate/core/init/cache/local_manager.dart';
 import 'package:fluttermvvmtemplate/core/init/lang/locale_keys.g.dart';
@@ -63,10 +64,24 @@ class _TestViewState extends BaseState<TestView> {
   }
 
   Widget get buildTextNumber {
-    return Observer(builder: (context) {
-      return Text(
-        viewModel.number.toString(),
-      );
-    });
+    return Column(
+      children: [
+        Observer(builder: (context) {
+          return Text(
+            viewModel.number.toString(),
+          );
+        }),
+      ],
+    );
   }
+}
+
+extension _FormArea on _TestViewState {
+  TextFormField get mailField => TextFormField(
+        validator: (value) {
+          if (value != null) {
+            value.isValidEmail;
+          }
+        },
+      );
 }
