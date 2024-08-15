@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttermvvmtemplate/core/constants/app/app_constants.dart';
 import 'package:fluttermvvmtemplate/core/init/lang/language_manager.dart';
+import 'package:fluttermvvmtemplate/core/init/navigation/app_navigation.dart';
+import 'package:fluttermvvmtemplate/core/init/navigation/navigation_route.dart';
 import 'package:fluttermvvmtemplate/core/init/notifier/provider_list.dart';
 import 'package:fluttermvvmtemplate/core/init/notifier/theme_notifier.dart';
 import 'package:fluttermvvmtemplate/view/authenticate/test/view/test_view.dart';
@@ -28,6 +30,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
         home: const TestView(),
+        onGenerateRoute: NavigationRoute.instance.generateRoute,
+        navigatorKey: AppNavigation.instance.navigatorKey,
       ),
     );
   }
