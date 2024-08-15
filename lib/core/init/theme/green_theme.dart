@@ -1,6 +1,10 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 
+const String FONT_FAMILY = "Poppins";
 final ThemeData greenThemeLight = ThemeData(
+  fontFamily: FONT_FAMILY,
   primarySwatch: Colors.teal,
   brightness: Brightness.light,
   primaryColor: const Color(0xff009688),
