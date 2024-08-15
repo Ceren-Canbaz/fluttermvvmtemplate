@@ -10,12 +10,15 @@ import 'package:fluttermvvmtemplate/view/authenticate/test/view/test_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(EasyLocalization(
-    supportedLocales: LanguageManager.instance.supportedLocales,
+  runApp(MultiProvider(
+    providers: [...ApplicationProvider.instance.dependItems],
+    child: EasyLocalization(
+      supportedLocales: LanguageManager.instance.supportedLocales,
 
-    ///which languages are supported
-    path: ApplicationConstants.LANG_ASSET_PATH,
-    child: const MyApp(),
+      ///which languages are supported
+      path: ApplicationConstants.LANG_ASSET_PATH,
+      child: const MyApp(),
+    ),
   ));
 }
 
@@ -25,14 +28,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [...ApplicationProvider.instance.dependItems],
-      child: MaterialApp(
-        theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
-        home: const TestView(),
-        onGenerateRoute: NavigationRoute.instance.generateRoute,
-        navigatorKey: AppNavigation.instance.navigatorKey,
-      ),
+    return MaterialApp(
+      theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
+      home: const TestView(),
+      onGenerateRoute: NavigationRoute.instance.generateRoute,
+      navigatorKey: AppNavigation.instance.navigatorKey,
     );
   }
 }

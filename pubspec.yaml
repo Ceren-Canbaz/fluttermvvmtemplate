@@ -41,6 +41,7 @@ dependencies:
   build_runner: ^2.4.9
   easy_localization: ^3.0.7
   provider: ^6.1.2
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:
