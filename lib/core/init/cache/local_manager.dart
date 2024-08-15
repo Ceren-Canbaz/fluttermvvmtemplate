@@ -1,4 +1,5 @@
-import 'package:fluttermvvmtemplate/core/init/lang/locale_keys.g.dart';
+import 'package:fluttermvvmtemplate/core/constants/enums/preferences_keys.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalManager {
@@ -15,10 +16,10 @@ class LocalManager {
     return;
   }
 
-  Future<void> setStringValue(LocaleKeys key, String value) async {
+  Future<void> setStringValue(PreferencesKey key, String value) async {
     await _preferences!.setString(key.toString(), value);
   }
 
-  String getStringValue(LocaleKeys key) =>
-      _preferences!.getString(key.toString())!;
+  String getStringValue(PreferencesKey key) =>
+      _preferences?.getString(key.toString()) ?? "";
 }
