@@ -2,6 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttermvvmtemplate/core/constants/app/app_constants.dart';
 import 'package:fluttermvvmtemplate/core/init/lang/language_manager.dart';
+import 'package:fluttermvvmtemplate/core/init/notifier/provider_list.dart';
+import 'package:fluttermvvmtemplate/core/init/notifier/theme_notifier.dart';
+import 'package:fluttermvvmtemplate/view/authenticate/test/view/test_view.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(EasyLocalization(
@@ -19,13 +23,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiProvider(
+      providers: [...ApplicationProvider.instance.dependItems],
+      child: MaterialApp(
+        theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
+        home: TestView(),
       ),
-      home: const Scaffold(),
     );
   }
 }
