@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:fluttermvvmtemplate/core/base/model/base_error.dart';
 import 'package:fluttermvvmtemplate/core/init/network/core_dio_impl.dart';
 import 'package:fluttermvvmtemplate/core/init/network/core_dio.dart';
 import '../../base/model/base_model.dart';
@@ -21,17 +22,6 @@ class NetworkManager {
     final baseOptions = BaseOptions(baseUrl: "BASE_URL", headers: {
       "val": LocalManager.instance.getStringValue(PreferencesKey.TOKEN)
     });
-    coreDio = CoreDioImpl(options: baseOptions);
-    _dio = Dio(baseOptions);
-    _dio!.interceptors.add(InterceptorsWrapper(
-      onError: (error, handler) {
-        log(error.message ?? "Some error occured");
-      },
-      onRequest: (options, handler) {},
-      onResponse: (response, handler) {
-        log("Data ${response.data}");
-      },
-    ));
+    coreDio = CoreDioImpl(baseOptions: baseOptions);
   }
-  Dio? _dio;
 }

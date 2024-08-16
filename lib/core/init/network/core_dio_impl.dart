@@ -6,9 +6,11 @@ import 'package:fluttermvvmtemplate/core/constants/enums/http_request_enum.dart'
 import 'package:fluttermvvmtemplate/core/init/network/core_dio.dart';
 
 class CoreDioImpl with DioMixin implements Dio, CoreDio {
-  final BaseOptions options;
+  final BaseOptions baseOptions;
 
-  CoreDioImpl({required this.options});
+  CoreDioImpl({required this.baseOptions}) {
+    interceptors.add(InterceptorsWrapper());
+  }
   @override
   Future<R> fetchRequest<R, T extends BaseModel>(String path,
       {Object? data,
