@@ -1,6 +1,6 @@
-import 'package:fluttermvvmtemplate/core/constants/enums/preferences_keys.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../constants/enums/preferences_keys.dart';
 
 class LocalManager {
   static LocalManager? _instance;

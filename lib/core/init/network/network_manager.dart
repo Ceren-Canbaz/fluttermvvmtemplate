@@ -2,10 +2,10 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:fluttermvvmtemplate/core/base/model/base_model.dart';
+import '../../base/model/base_model.dart';
 
-import 'package:fluttermvvmtemplate/core/constants/enums/preferences_keys.dart';
-import 'package:fluttermvvmtemplate/core/init/cache/local_manager.dart';
+import '../../constants/enums/preferences_keys.dart';
+import '../cache/local_manager.dart';
 
 class NetworkManager {
   static NetworkManager? _instance;

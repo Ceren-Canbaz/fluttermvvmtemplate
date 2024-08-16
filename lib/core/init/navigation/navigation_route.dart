@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermvvmtemplate/core/components/card/not_found_navigation.dart';
-import 'package:fluttermvvmtemplate/core/constants/navigation/navigator_constants.dart';
+import '../../components/card/not_found_navigation.dart';
+import '../../constants/navigation/navigator_constants.dart';
 
 ///TODO: fix this app Dependency /view
 import 'package:fluttermvvmtemplate/view/authenticate/test/view/test_view.dart';

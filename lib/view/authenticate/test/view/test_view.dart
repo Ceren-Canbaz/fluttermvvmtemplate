@@ -1,16 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:fluttermvvmtemplate/core/base/state/base_state.dart';
-import 'package:fluttermvvmtemplate/core/base/view/base_view.dart';
-import 'package:fluttermvvmtemplate/core/components/text/locale_text.dart';
-import 'package:fluttermvvmtemplate/core/constants/enums/preferences_keys.dart';
-import 'package:fluttermvvmtemplate/core/extension/context_extension.dart';
-import 'package:fluttermvvmtemplate/core/extension/string_extension.dart';
-import 'package:fluttermvvmtemplate/core/init/cache/local_manager.dart';
-import 'package:fluttermvvmtemplate/core/init/lang/locale_keys.g.dart';
-import 'package:fluttermvvmtemplate/view/authenticate/test/viewmodel/test_view_model.dart';
+import '../../../../core/base/state/base_state.dart';
+import '../../../../core/base/view/base_view.dart';
+import '../../../../core/components/text/locale_text.dart';
+import '../../../../core/constants/enums/preferences_keys.dart';
+import '../../../../core/extension/string_extension.dart';
+import '../../../../core/init/cache/local_manager.dart';
+import '../../../../core/init/lang/locale_keys.g.dart';
+import '../viewmodel/test_view_model.dart';
 
 class TestView extends StatefulWidget {
   const TestView({super.key});

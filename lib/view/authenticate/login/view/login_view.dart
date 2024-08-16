@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermvvmtemplate/core/base/view/base_view.dart';
-import 'package:fluttermvvmtemplate/view/authenticate/login/viewmodel/login_view_model.dart';
+import '../../../../core/base/view/base_view.dart';
+import '../viewmodel/login_view_model.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
