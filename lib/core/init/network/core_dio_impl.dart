@@ -11,7 +11,7 @@ class CoreDioImpl with DioMixin implements Dio, CoreDio {
 
   CoreDioImpl({required this.options});
   @override
-  Future<void> fetchRequest<T extends BaseModel>(String path,
+  Future<R> fetchRequest<R, T extends BaseModel>(String path,
       {Object? data,
       required T parseModel,
       required HttpTypes method,
@@ -28,16 +28,18 @@ class CoreDioImpl with DioMixin implements Dio, CoreDio {
         return _responseParser(parseModel, response.data);
 
       default:
-        return BaseError(message: response.statusMessage ?? "");
+        throw Exception(
+          response.statusCode,
+        );
     }
   }
 
-  _responseParser(BaseModel model, dynamic data) {
+  R _responseParser<R>(BaseModel model, dynamic data) {
     if (data is List) {
-      data.map((e) => model.fromJson(e)).toList();
+      return data.map((e) => model.fromJson(e)).toList() as R;
     } else if (data is Map<String, dynamic>) {
-      return model.fromJson(data);
+      return model.fromJson(data) as R;
     }
-    return data;
+    return data as R;
   }
 }

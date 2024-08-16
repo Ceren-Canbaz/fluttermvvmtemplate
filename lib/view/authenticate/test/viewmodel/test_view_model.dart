@@ -40,7 +40,9 @@ abstract class _TestViewModelBase extends BaseViewModel with Store {
 
   @action
   Future<void> getSampleRequest() async {
-    final list = await coreDio.fetchRequest("x",
+    final list = await coreDio.fetchRequest<List<TestModel>, TestModel>("x",
         method: HttpTypes.GET, parseModel: TestModel());
+    if (list is List<TestModel>) {
+    } else {}
   }
 }
