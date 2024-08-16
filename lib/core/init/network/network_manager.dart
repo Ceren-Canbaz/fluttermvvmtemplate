@@ -34,21 +34,4 @@ class NetworkManager {
     ));
   }
   Dio? _dio;
-  Future dioGet<T extends BaseModel>(
-      {required String path, required T model}) async {
-    final response = await _dio?.get(path);
-    if (response != null) {
-      switch (response.statusCode) {
-        case HttpStatus.ok:
-          final responseBody = response.data;
-          if (responseBody is List) {
-            return responseBody.map((e) => model.fromJson(e)).toList();
-          } else if (responseBody is Map<String, dynamic>) {
-            return model.fromJson(responseBody);
-          }
-          return responseBody;
-        default:
-      }
-    }
-  }
 }
